@@ -15,6 +15,15 @@ steps:
     - push
     - pull_request
 
+- name: init_redis
+  pull: default
+  image: redis:3.0
+  commands:
+  - sleep 5
+  - redis-cli -h redis ping
+  - redis-cli -h redis set HELLO hello
+  - redis-cli -h redis get HELLO
+
 - name: test-sqlite
   image: golang:1.12
   environment:
@@ -297,6 +306,15 @@ services:
   image: cockroachdb/cockroach:v19.2.4
   commands:
   - /cockroach/cockroach start --insecure
+  when:
+    event:
+    - push
+    - tag
+    - pull_request
+
+- name: redis
+  pull: default
+  image: redis:3.0
   when:
     event:
     - push
