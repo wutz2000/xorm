@@ -31,7 +31,7 @@ steps:
     GOPROXY: "https://goproxy.cn"
   commands:
   - make test-sqlite
-  - TEST_CACHE_ENABLE=true make test-sqlite
+  - TEST_CACHE_CONNSTR=memory make test-sqlite
   - TEST_QUOTE_POLICY=reserved make test-sqlite
   when:
     event:
@@ -50,7 +50,8 @@ steps:
     TEST_MYSQL_PASSWORD:
   commands:
   - make test-mysql
-  - TEST_CACHE_ENABLE=true make test-mysql
+  - TEST_CACHE_CONNSTR=memory make test-mysql
+  - TEST_CACHE_CONNSTR=redis://redis:6379/1 make test-mysql
   - TEST_QUOTE_POLICY=reserved make test-mysql
   when:
     event:
@@ -69,7 +70,7 @@ steps:
     TEST_MYSQL_PASSWORD:
   commands:
   - make test-mysql
-  - TEST_CACHE_ENABLE=true make test-mysql
+  - TEST_CACHE_CONNSTR=memory make test-mysql
   - TEST_QUOTE_POLICY=reserved make test-mysql
   when:
     event:
@@ -90,7 +91,7 @@ steps:
     TEST_MYSQL_PASSWORD:
   commands:
   - make test-mysql
-  - TEST_CACHE_ENABLE=true make test-mysql
+  - TEST_CACHE_CONNSTR=memory make test-mysql
   - TEST_QUOTE_POLICY=reserved make test-mysql
   when:
     event:
@@ -111,7 +112,7 @@ steps:
     TEST_MYSQL_PASSWORD:
   commands:
   - make test-mymysql
-  - TEST_CACHE_ENABLE=true make test-mymysql
+  - TEST_CACHE_CONNSTR=memory make test-mymysql
   - TEST_QUOTE_POLICY=reserved make test-mymysql
   when:
     event:
@@ -130,7 +131,7 @@ steps:
     TEST_PGSQL_PASSWORD: postgres
   commands:
   - make test-postgres
-  - TEST_CACHE_ENABLE=true make test-postgres
+  - TEST_CACHE_CONNSTR=memory make test-postgres
   - TEST_QUOTE_POLICY=reserved make test-postgres
   when:
     event:
@@ -152,7 +153,7 @@ steps:
     TEST_PGSQL_PASSWORD: postgres
   commands:
   - make test-postgres
-  - TEST_CACHE_ENABLE=true make test-postgres
+  - TEST_CACHE_CONNSTR=memory make test-postgres
   - TEST_QUOTE_POLICY=reserved make test-postgres
   when:
     event:
@@ -171,7 +172,7 @@ steps:
     TEST_MSSQL_PASSWORD: "yourStrong(!)Password"
   commands:
   - make test-mssql
-  - TEST_CACHE_ENABLE=true make test-mssql
+  - TEST_CACHE_CONNSTR=memory make test-mssql
   - TEST_QUOTE_POLICY=reserved make test-mssql
   when:
     event:
@@ -190,7 +191,7 @@ steps:
     TEST_TIDB_PASSWORD:
   commands:
   - make test-tidb
-  - TEST_CACHE_ENABLE=true make test-tidb
+  - TEST_CACHE_CONNSTR=memory make test-tidb
   - TEST_QUOTE_POLICY=reserved make test-tidb
   when:
     event:
@@ -210,7 +211,7 @@ steps:
   commands:
   - sleep 10
   - make test-cockroach
-  - TEST_CACHE_ENABLE=true make test-cockroach
+  - TEST_CACHE_CONNSTR=memory make test-cockroach
   when:
     event:
     - push
