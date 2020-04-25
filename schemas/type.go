@@ -11,14 +11,16 @@ import (
 	"time"
 )
 
+// DBType represents a database type
 type DBType string
 
 const (
-	POSTGRES DBType = "postgres"
-	SQLITE   DBType = "sqlite3"
-	MYSQL    DBType = "mysql"
-	MSSQL    DBType = "mssql"
-	ORACLE   DBType = "oracle"
+	POSTGRES   DBType = "postgres"
+	SQLITE     DBType = "sqlite3"
+	MYSQL      DBType = "mysql"
+	MSSQL      DBType = "mssql"
+	ORACLE     DBType = "oracle"
+	CLICKHOUSE DBType = "clickhouse"
 )
 
 // SQLType represents SQL types
